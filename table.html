@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Table</title>
+</head>
+<body>
+    <form id="container">
+    <h1>Simple Table</h1>
+    Rows:
+    <input type="number" id="row">
+    <br>
+    Columns:
+    <input type="number" id="col">
+    <br>
+    Table:
+    <input type="number" id="table">
+    <br>
+    <button type="submit" onclick="func(event)">Calculate</button>
+    <div id="op" style="display: none;">
+        <p id="opv"></p>
+    </div>
+    </form>
+    <script>
+        
+        function func(event){
+            event.preventDefault();
+            const r=document.getElementById("row").value;
+            const c=document.getElementById("col").value;
+            const t=document.getElementById("table").value;
+            const out=document.getElementById("op");
+            const outp=document.getElementById("opv");
+            out.textContent='';
+            const t1=+t;
+            var t2=t1;
+            for(let i=1;i<=r;i++)
+            {
+                const rowdiv=document.createElement('div');
+                for(let u=1;u<=c;u++)
+                {
+                rowdiv.textContent+=`${t2}+${i}=${(t2+i)} `;
+                t2+=i;
+                
+                }
+                out.appendChild(rowdiv);
+                t2=t1;
+                out.style.display='block';
+
+
+    
+            }
+            document.getElementById("container").reset();
+                r='';
+                c='';
+                t='';    
+
+
+        }
+    </script>
+    <style>
+        #container{
+            text-align: center;
+            font-size: 20px;
+        }
+        input{
+            margin-bottom: 10px;
+        }
+        button{
+            background-color: blue;
+            color:bisque;
+            cursor: pointer;
+        }
+        button:hover{
+            background-color: aqua;
+            color:black;
+        }
+    </style>
+    
+</body>
+</html>

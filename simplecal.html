@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculation</title>
+</head>
+<body>
+    <div id="input">
+    <h1>Simple Calculation</h1>
+    Enter value 1:
+    <input type="number" id="v1">
+    <br>
+    Enter value 2:
+    <input type="number" id="v2">
+    <br>
+    <button type="submit" onclick="calc(event)">Calculate</button>
+    </div>
+    <div id="output">
+    <div id="sum" style="display:none">
+        <p id="sum1"></p>
+    </div>
+    <div id="sub" style="display:none">
+        <p id="sub1"></p>
+    </div>
+    <div id="mul" style="display:none">
+        <p id="mul1"></p>
+    </div>
+    <div id="div" style="display:none">
+        <p id="div1"></p>
+    </div>
+    </div>
+    <style>
+        body{
+            align-items: center;
+            text-align: center;
+            box-sizing: border-box;
+            border: 10px;
+            border-color: black;
+            background-image: url(data:image/jpeg;base64,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);
+        }
+        input{
+            margin-bottom: 20px;
+            font-size:50px;
+        }
+        button{
+            background-color: green;
+            color:beige;
+            cursor: pointer;
+            font-size: 35px;
+        }
+        button:hover{
+            background-color: blue;
+        }
+        #input{
+            font-size: 50px;
+            color:white;
+            box-sizing: border-box;
+            border-color: black;
+            justify-content: center;
+            max-width: max-content;
+            padding: 20px;
+            margin-left: 300px;
+        }
+        #output{
+            font-size:50px;
+            color:white;
+            box-sizing: border-box;
+            border-color: black;
+            justify-content: center;
+            max-width: max-content;
+            padding: 20px;
+            margin-left: 500px;
+
+        }
+
+    </style>
+    <script>
+        function calc(event){
+            event.preventDefault();
+        var va1=document.getElementById("v1").value;
+        var va2=document.getElementById("v2").value;
+        let v1=+va1;
+        let v2=+va2;
+        const a1=document.getElementById("sum");
+        const a2=document.getElementById("sum1");
+        const s1=document.getElementById("sub");
+        const s2=document.getElementById("sub1");
+        const m1=document.getElementById("mul");
+        const m2=document.getElementById("mul1");
+        const d1=document.getElementById("div");
+        const d2=document.getElementById("div1");
+        a2.textContent="Sum is "+(v1+v2);
+        a1.style.display='block';
+        s2.textContent="Sub is "+(v1-v2);
+        s1.style.display='block';
+        m2.textContent="Mul is "+(v1*v2);
+        m1.style.display='block';
+        d2.textContent="Div is "+(v1/v2);
+        d1.style.display='block';
+        }
+    </script>
+    
+</body>
+</html>

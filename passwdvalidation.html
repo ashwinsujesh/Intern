@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Validation</title>
+</head>
+<body>
+    <div id="container">
+        <h1>Password Validation</h1>
+        <label id="name"><b>Name:</b></label>
+        <input type="text" id="name" placeholder="enter name" required>
+        <br>
+        <label id="pwd"><b>Password:</b></label>
+        <input type="password" id="pwd1" placeholder="enter password" required>
+        <br>
+        <button type="submit" onclick="valid(event)">login</button>
+        <div id="output" style="display: none;">
+            <p><b>Valid User!!!!!</b></p>
+        </div>
+    </div>
+    <script>
+        function valid(event){
+            event.preventDefault();
+            const a=document.getElementById("output");
+            const b=document.getElementById("name");
+            const p1=document.getElementById("pwd1").value;
+            if(b==='' || p1==='')
+            {
+                alert("Please enter values for all the fields!!");
+                return false;
+            }
+            if (p1.length < 8) {
+            alert("Password must be at least 8 characters long.");
+            return false;
+            }
+    
+            if (!/[a-z]/.test(p1)) {
+            alert("Password must contain at least one lowercase letter.");
+            return false;
+            }
+
+            if (!/[A-Z]/.test(p1)) {
+            alert("Password must contain at least one uppercase letter.");
+            return false;
+            }
+    
+            if (!/\d/.test(p1)) {
+            alert("Password must contain at least one digit.");
+            return false;
+            }
+    
+            a.style.display='block';
+            
+        }
+    </script>
+    <style>
+        #container{
+            text-align: center;
+            max-width: fit-content;
+            padding:5px;
+            margin-left: 230px;
+            align-items: center;
+            background-color: blueviolet;
+            font-size: 30px;
+        }
+        input{
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        button{
+            background-color: blue;
+            color:white;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+    </style>
+    
+</body>
+</html>

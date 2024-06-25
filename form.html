@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1 style="text-align: center;font-size: 40px;margin-top: 20px;margin-bottom:20px;">Registration Form</h1>
+    <form id="formcontainer">
+    <div id="container">
+        <label id="name"><b>Name</b></label>
+        <br>
+        <input type="text" id="nmip" placeholder="Enter your name" required>
+        <br>
+        <label id="email"><b>Email</b></label>
+        <br>
+        <input type="email" id="eip" placeholder="Enter your email" required>
+        <br>
+        <label id="phone"><b>Phone number</b></label>
+        <br>
+        <input type="text" id="noip" placeholder="Enter your number" maxlength="10" required>
+        <br>
+        <label id="dob1"><b>DOB</b></label>
+        <br>
+        <input type="date" id="dip" placeholder="Enter your DOB" required>
+        <br>
+        <label id="age2"><b>Age</b></label>
+        <br>
+        <input type="text" id="ipage" readonly style="text-align: center;"> 
+        <br>
+        <label id="pwd"><b>Password</b></label>
+        <br>
+        <input type="password" id="pip" placeholder="Enter password" required>
+        <br>
+        <label id="rpwd"><b>Reenter the Password</b></label>
+        <br>
+        <input type="password" id="rpip" placeholder="Reenter the password" required>
+        <br>
+        <button type="submit" id="btn">Register</button>
+    </div>
+    </form>
+    <div id="op" style="display:none">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phonenumber</th>
+                    <th>Age</th>
+                    <th>Password</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="tname"></td>
+                    <td id="temail"></td>
+                    <td id="tphone"></td>
+                    <td id="tage"></td>
+                    <td id="tpwd"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        document.getElementById("dip").addEventListener('change',function(e){
+            e.preventDefault();
+            const dt=document.getElementById("dip").value;
+            const da1=new Date(dt);
+            const cda1=new Date();
+            const a=cda1.getFullYear()-da1.getFullYear();
+            document.getElementById("ipage").value=a;
+
+           
+        });
+        document.getElementById("btn").addEventListener('click',function(e){
+            e.preventDefault();
+            let isvalid=true;
+            const af=document.getElementById("agefield");
+            const nm=document.getElementById("nmip").value;
+            const em=document.getElementById("eip").value;
+            const ph=document.getElementById("noip").value;
+            const dt=document.getElementById("dip").value;
+            const p1=document.getElementById("pip").value;
+            const p2=document.getElementById("rpip").value;
+            const da1=new Date(dt);
+            const cda1=new Date();
+            const a=cda1.getFullYear()-da1.getFullYear();
+
+            const opt=document.getElementById("op");
+            document.getElementById("tname").textContent=nm;
+            document.getElementById("temail").textContent=em;
+            document.getElementById("tphone").textContent=ph;
+            document.getElementById("tage").textContent=a;
+            document.getElementById("tpwd").textContent=p1;
+            if((nm==='' || em==='' || ph==='' || dt==='' || p1==='' || p2==='')){
+                alert("Enter value for all fields");
+            }
+            else{
+            if(!/.+@.+\..+/.test(em)){
+                isvalid=false;
+                alert("Enter Valid Email");
+            }
+            if(ph.length<10 || ph.length>10 || /[^0-9]/.test(ph) || ph.charAt(0)!=="9"){
+                isvalid=false;
+                alert("Enter Valid Phone number");
+            }
+            if(p1===p2){
+            if(!/[a-z]/.test(p1) || !/[0-9]/.test(p1) || !(p1.charAt(0)===p1.charAt(0).toUpperCase()) || !/[^a-zA-Z0-9]/.test(p1)){
+                isvalid=false;
+                alert("Password should start with alphabet, should contain atleast 1 lowercase and 1 special character");
+            }
+            }
+            else{
+                isvalid=false;
+                alert("Password Mismatched");
+            }
+            if(isvalid){
+                opt.style.display='block';
+                document.getElementById("formcontainer").reset();
+                document.getElementById("ipage").value = '';
+            }   
+        }   
+        });
+    </script>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            text-align: center;
+            padding:10px;
+        }
+        #formcontainer{
+            text-align: center;
+            box-sizing: inherit ;
+            border-width: 3px;
+            box-sizing: border-box;
+            background-color: aqua;
+            max-width: fit-content;
+            margin-left: 560px;
+            font-size: 20px;
+            padding:10px;
+        }
+        label{
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        input{
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        #btn{
+            background-color: blue;
+            color:white;
+            cursor:pointer;
+            font-size: 25px;
+        }
+        #btn2{
+            background-color: blue;
+            color:white;
+            cursor:pointer;
+            font-size: 15px;
+        }
+        #btn:hover{
+            background-color: rgb(113, 165, 165);
+            color:black;
+        }
+        #op{
+            background-color: aqua;
+            text-align: center;
+            margin-top: 20px;
+            max-width: fit-content;
+            margin-left: 450px;
+
+        }
+        #agefield{
+            background-color: rgb(10, 241, 99);
+            max-width: fit-content;
+            text-align: center;
+            margin-left: 90px;
+        }
+
+    </style>
+    <footer style="text-align: center; margin-top: 20px;">Date of Completion:17/6/2024</footer>
+    
+</body>
+</html>

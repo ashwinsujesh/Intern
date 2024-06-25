@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Selection</title>
+</head>
+<body>
+    <h1>Simple Option Selection</h1>
+    <select id="sel1">
+        <option>Orange</option>
+        <option>Green</option>
+        <option>White</option>
+    </select>
+    <select id="sel2">
+        <option>Orange</option>
+        <option>Green</option>
+        <option>White</option>
+    </select>
+    <script>
+        document.getElementById("sel1").addEventListener('change',function(e){
+            document.getElementById("sel2").value=document.getElementById("sel1").value;
+        });
+        document.getElementById("sel2").addEventListener('change',function(e){
+            document.getElementById('sel1').value=document.getElementById('sel2').value;
+        });
+    </script>
+    <style>
+        body{
+            text-align: center;
+            font-size: 25px;
+            background-color: aquamarine;
+            justify-content: center;
+            margin-top: 200px;
+        }
+        select{
+            font-size: 40px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        #sel1{
+            margin-right: 30px;
+        }
+    </style>
+    <footer style="text-align: center; margin-top: 20px;">Date of Completion:13/6/2024</footer>
+    
+</body>
+</html>

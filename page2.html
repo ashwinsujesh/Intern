@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagination</title>
+    <link rel="icon" href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAMAAzAMBIgACEQEDEQH/xAAcAAEAAgMBAQEAAAAAAAAAAAAABgcEBQgBAwL/xABDEAABAwIDBQQHBQYDCQAAAAABAAIDBAUGBxESITFBURNhcYEUIjJCUpGhCBViscEWIzNDctGisvAkJlVjc4KS4fH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8AuRERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAROS956IPEXyqqmCljMlVPHDGBqXvIAChd5zXwnbNpja19ZI33aZm1/i4fVBOSQOJ0Xqpetz5jBIoLE8g85qnZJ8gCtZJnrdCfUs1EB0L3FBfSKiafPe4AgVFjpHM137Ermn8lILZnlZp3Btfb6yk/G0iQf3+iC1kWgseNMO33ZFtudPJIRvjcdl48jvW/G8a8uqAic9EQEREBERAREQEREBERAREQERYV6u1FY7bLcblO2GnhGpJ4uPQDmUGXLNFBE+WaRscTBq57joAPFVNjPOSkoTJSYbibVSt3GpeP3YPcOaheKMW37Me8NtNmgmZRudpHSsOmo+KQ+fgrJwJlVbbA2Oru+xXXHj6w/dx/0j9SgrWlw5jrMCb0mufO2mcdRJUEsYB+FnNTqyZI2mna03etnq37iWx+ozw6q1WtDRsta1rRuAC9QRqgwDhagaBDZaYn4njaK2jbFZ2jZba6MD/otWxRBqZ8NWOoBbPaKN7T/wAoKP3PKvCde07Nv9FceDqdxbopsiCjb7klWU2s+HrgJnNOojm9R3k4LS27GuM8C1YorzFLLBrvhqtTtD8L10ZwOvRYN4tFvvdI6kutJHUwPG9sg139x4jyQaPB2PLLiuEtopexqwPXpZNz2+HVSrdpqOAVAY4ywuGGZTd8MTTy0sR2y1p/ewb+XxN+vipTlnmiy6uis+IXtZW6aRVBOjZT0PQoLXXicB/dEBERAREQEREBERAREQDw3qo/tDWg1Fot94jYT6NKYZD0a7h9R9Vbq1WJrPDfbBW2uf2aiItaT7rvdPkdEEdygvIu+CaQOftT0pMEg14acFNjw3DeufcnbtUYaxlPYK0Oa2qcYXs+GVvA+a6Be4MaXOcGtDSXOPujmUFY554qdabLHZaSTSqrwTKQd7IQf1O75pkhhNtrs331VxkVdaP3QcN7IuXzVdaS5jZqHcTTST8NfYgZ/r5ldJRRshjZFE3ZjY0NY3oANyD9rxEQERDuQD/APFQOed5N4xPSWOiO36J6rgDrrK86aeQ0Vr5g4sgwlYJqpxa6skHZ0sWvtvPPwHFVTk1hma/X+XElz2pIYZC4Pf/ADZjv+mqC6MK2wWXDtvt401hha13jpvW1TxRBj3EgUFTtbh2TtfkVQuQY/3wrdPYFM7h47lb+Yd0bZ8HXSreQHdj2cevNztwCrj7O9tdtXO5vBDdGwt3ceZ/NBdQ1IPUclzxnFXuxDmDDaaXV7aQNpgBze46u0+YHkruxdfYcN4erLpUEbUTNIm6+287gPmqWyUskt+xfUX6uHaMpXGVziNzpnE/lrqgve00TLfa6WijGjYImsHkN6y08tEQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREH/9k=">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #showentries {
+            margin:0;
+        }
+        #entrySelect {
+            padding: 5px;
+            margin-left: 20px;
+            font-size: 14px;
+        }
+        .pagest {
+            display: none;
+            background: #fff;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 900px;
+        }
+        .pagest.active {
+            display: block;
+        }
+        button {
+            border: 1px solid #ccc;
+            border-radius: 100%;
+            background: #fff;
+            color: #fc1515;
+            padding: 5px 10px;
+            margin: 2px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #f36b10;
+            color: white;
+        }
+        #pageclick {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        #bottomp {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            max-width: 600px;
+            align-items: center;
+            margin: 20px 0;
+        }
+        #pagecount {
+            font-size: 14px;
+            text-align: left;
+        }
+        #pages11 {
+            font-size: 14px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="showentries">
+        <p id="showent"></p>
+    </div>
+        <select id="entrySelect" onchange="showEntries() ">
+            <option value="1">1</option>
+            <option value="4">4</option>
+            <option value="6">6</option>
+            <option value="8">8</option>
+            <option value="10">All</option>
+        </select>
+    <div id="pages">
+        <div id="page1" class="pagest active">
+            <p>Page 1 Content</p>
+        <p>This is first page content</p></div>
+        <div id="page2" class="pagest">
+            <p>Page 2 Content</p>
+            <p>This is Second page content</p>
+        </div>
+        <div id="page3" class="pagest">
+            <p>Page 3 Content</p>
+            <p>This is third page content</p>
+        </div>
+        <div id="page4" class="pagest">
+            <p>Page 4 Content</p>
+            <p>This is fourth page content</p>
+        </div>
+        <div id="page5" class="pagest">
+            <p>Page 5 Content</p>
+            <p>This is fifth page content</p>
+        </div>
+        <div id="page6" class="pagest">
+            <p>Page 6 Content</p>
+            <p>This is sixth page content</p>
+        </div>
+        <div id="page7" class="pagest">
+            <p>Page 7 Content</p>
+            <p>This is seventh page content</p>
+        </div>
+        <div id="page8" class="pagest">
+            <p>Page 8 Content</p>
+            <p>This is Eight page content</p>
+        </div>
+        <div id="page9" class="pagest">
+            <p>Page 9 Content</p>
+            <p>This is nineth page content</p>
+        </div>
+        <div id="page10" class="pagest">
+            <p>Page 10 Content</p>
+            <p>This is Tenth page content</p>
+        </div>
+    </div>
+    <div id="bottomp">
+        <div id="pagecount">
+            <p>Showing</p>
+            <p id="dataentry"></p>
+        </div>
+
+        <div id="pageclick">
+            <button id="prev" onclick="prev()">&lt;</button>
+            <button id="num1" onclick="showPage(1)">1</button>
+            <button id="num2" onclick="showPage(2)">2</button>
+            <button id="num3" onclick="showPage(3)">3</button>
+            <button id="num4" onclick="showPage(4)">4</button>
+            <button id="num5" onclick="showPage(5)">5</button>
+            <button id="num6" onclick="showPage(6)">6</button>
+            <button id="num7" onclick="showPage(7)">7</button>
+            <button id="num8" onclick="showPage(8)">8</button>
+            <button id="num9" onclick="showPage(9)">9</button>
+            <button id="num10" onclick="showPage(10)">10</button>
+            <button id="next" onclick="next()">&gt;</button>
+            <br>
+            <p id="pages11"></p>
+        </div>
+    </div>
+
+    <script>
+        let currentPage = 1;
+        let totalPages = 10;
+
+        function showPage(pageNumber) {
+            const pages = document.querySelectorAll('.pagest');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+
+            document.getElementById('page' + pageNumber).classList.add('active');
+            currentPage = pageNumber;
+            document.getElementById("dataentry").textContent=`${currentPage} out of ${totalPages}`;
+            document.getElementById("pages11").textContent=` Pages ${currentPage} of ${totalPages}`;
+            document.getElementById("showent").textContent=`Total ${totalPages} entries`;
+        }
+
+        function prev() {
+            if (currentPage > 1) {
+                showPage(currentPage - 1);
+            }
+        }
+
+        function next() {
+            if (currentPage < totalPages) {
+                showPage(currentPage + 1);
+            }
+        }
+
+        function showEntries() {
+            const select = document.getElementById('entrySelect');
+            const entries = select.value === 'All' ? totalPages : parseInt(select.value);
+            const pages = document.querySelectorAll('.pagest');
+            totalPages = entries;
+
+            pages.forEach((page, index) => {
+                if (index < entries) {
+                    page.classList.add('active');
+                } else {
+                    page.classList.remove('active');
+                }
+            });
+
+            currentPage = 1;
+            document.getElementById("dataentry").textContent=`${currentPage} out of ${totalPages}`;
+            document.getElementById("pages11").textContent=` Pages ${currentPage} of ${totalPages}`;
+            document.getElementById("showent").textContent=`Total ${totalPages} entries`;
+        }
+        showPage(1);
+    </script>
+</body>
+</html>

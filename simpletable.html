@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+</head>
+<body>
+    <form id="formcont">
+    <h1>Enter Values for table</h1>
+    Enter name:
+    <input type="text" id="fname">
+    Enter last name:
+    <input type="text" id="lname1">
+    Enter Age:
+    <input type="number" id="age1">
+    <br>
+    <button type="submit" id="btn">Submit</button>
+    <br>
+    <br>
+    <br>
+    <hr>
+    </form>
+<table  id="table1" style="display:none;">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+        </tr>
+    </thead>
+    <tbody id="tablecontent">
+    </tbody>
+</table>
+<style>
+    table, th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        table {
+            margin-left: 450px;
+            border-collapse: collapse;
+            width: fit-content;
+            margin-bottom: 20px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        td {
+            word-wrap: break-word;
+        }
+    
+</style>
+<script>
+    let l=[];
+    document.getElementById("btn").addEventListener('click',function(e){
+        e.preventDefault();
+        const a=document.getElementById("fname").value;
+        const b=document.getElementById("lname1").value;
+        const c=document.getElementById("age1").value;
+        l.push({FirstName:a,LastName:b,Age:c});
+        display();
+        document.getElementById("formcont").reset();
+        document.getElementById("name").value = '';
+        document.getElementById("lname1").value = '';
+        document.getElementById("age1").value = '';
+    });
+    function display(){
+        const tc=document.getElementById("tablecontent");
+        tc.innerHTML='';
+        l.forEach(entry => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${entry.FirstName}</td>
+                    <td>${entry.LastName}</td>
+                    <td>${entry.Age}</td>
+                `;
+                tc.appendChild(row);
+            });
+            document.getElementById("table1").style.display='block';
+
+
+    }
+
+
+</script>
+    
+</body>
+</html>

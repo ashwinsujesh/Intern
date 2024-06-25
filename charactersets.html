@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CharacterSet Seperation</title>
+    </head>
+    <body>
+        <h1 style="text-align: center;font-size: 60px;">Character Seperation</h1>
+        <div id="ip">
+            <label id="lbl" style="color: rgb(22, 22, 22);"><b>Enter Characters</b></label>
+            <br>
+            <input type="text" id="iptag" style="border-color: rgb(241, 130, 26);">
+            <br>
+            <button type="submit" id="btn" style="font-size: 20px;background-color: blue;color: beige;cursor: pointer;">Seperate</button>
+        </div>
+        <div id="op" style="display: none;">
+            <div id="alp">
+            <h2><b>Alphabets</b></h2>
+            <p id="alpop"></p>
+            </div>
+            <div id="num">
+                <h3><b>Numbers</b></h3>
+                <p id="numop"></p>
+            </div>
+            <div id="spl">
+                <h4><b>Special Characters</b></h4>
+                <p id="splop"></p>
+            </div>
+        </div>
+        <script>
+            document.getElementById("btn").addEventListener('click',function(e){
+                e.preventDefault();
+                let o1='';
+                let o2='';
+                let o3='';
+                const o=document.getElementById("op");
+                const a=document.getElementById("alpop");
+                const n=document.getElementById("numop");
+                const s=document.getElementById("splop");
+                const i=document.getElementById("iptag").value;
+                for(let j of i)
+                {
+                    if(/[a-zA-Z]/.test(j))
+                    {
+                        o1+=j;
+                    }
+                    else if(/[0-9]/.test(j))
+                    {
+                        o2+=j;
+                    }
+                    else
+                    {
+                        o3+=j;
+                    }
+                }
+                a.textContent=o1;
+                n.textContent=o2;
+                s.textContent=o3;
+                o.style.display='flex';
+            });
+            document.getElementById('iptag').addEventListener('input',function(e){
+                const o=document.getElementById('op');
+                const i2=document.getElementById('iptag').value;
+                if(!i2){
+                    o.style.display='none';
+                }
+            });
+        </script>
+        <style>
+            #op{
+                background-color: beige;
+                color: black;
+                display:flex;
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: flex-start;
+            }
+            #ip{
+                text-align: center;
+            }
+            label{
+                margin-bottom: 20px;
+                font-size:30px;
+            }
+            input{
+                font-size: 30px;
+                margin-top: 15px;
+                margin-bottom:15px;
+            }
+            button:hover{
+                background-color: aqua;
+                color: black;
+            }
+            #alp{
+                font-size: 18px;
+            }
+            #num{
+                font-size: 22px;
+            }
+            #spl{
+                font-size:22px;
+            }
+            #alpop{
+                text-align: center;
+            }
+            #numop{
+                text-align: center;
+            }
+            #splop{
+                text-align: center;;
+            }
+        </style>
+        <footer style="text-align: center; margin-top: 20px;">Date of Completion:14/6/2024</footer>
+    </body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Simple Registration Form</h1>
+    <div id="container">
+    <form id="formcontainer">
+        <label id="name"><b>Name:</b></label>
+        <input id="namein" type="text" placeholder="Enter your name" required>
+        <br>
+        <label id="email"><b>Email:</b></label>
+        <input id="emailin" type="email" placeholder="Enter your email id" required>
+        <br>
+        <label id="phn"><b>Phone:</b></label>
+        <input id="phnin" type="number" placeholder="Enter your phone number" required>
+        <br>
+        <label id="age"><b>Age:</b></label>
+        <input id="agein" type="number" placeholder="Enter your Age" required>
+        <br>
+        <label id="dob"><b>DOB</b></label>
+        <input id="dobin" type="date" placeholder="Enter DOB" required>
+        <br>
+        <label id="address"><b>Address</b></label>
+        <input id="addin" type="text" placeholder="Enter Address" required>
+        <br>
+        <button type="submit" id="submitbtn">Submit</button>
+    </form>
+    <div id="output" style="display: none;">
+        <h2><b>OUTPUT</b></h2>
+        <p id="resultdisp">Details Entered</p>
+    </div>
+</div>
+</body>
+    <style>
+        #container{
+            margin-left: 500px;
+            background-color:aqua;
+            box-sizing: border-box;
+            border-color: black;
+            justify-content: center;
+            text-align: justify;
+            border:2px solid black;
+            max-width: fit-content;
+            padding: 10px;
+
+        }
+       
+        input{
+            background-color: beige;
+            padding-right: 10px;
+            margin-bottom: 20px;
+        }
+        label{
+            padding-bottom: 30px;
+        }
+        #submit{
+            margin-left: 130px;
+        }
+        #addin{
+            padding: 30px;
+        }
+        input{
+            margin-left: 10px;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+        }
+        #submitbtn{
+            background-color: blue;
+            color:white;
+            margin-left: 100px;
+
+        }
+        #resultdisp{
+            margin-top: 20px;
+            background-color: green;
+            color:antiquewhite;
+            box-sizing: border-box;
+            max-width: fit-content;
+        }
+    </style>
+    <script>
+        document.getElementById("formcontainer").addEventListener('submit',function(event) {
+            event.preventDefault();
+            let isvalid=true;
+            const a=document.getElementById("namein").value;
+            const b=document.getElementById("emailin").value;
+            const c=document.getElementById("agein").value;
+            const d=document.getElementById("dobin").value;
+            const e=document.getElementById("addin").value;
+            const f=document.getElementById("phnin").value;
+            var em=/.+@.+\..+/;
+            if(!em.test(b)){
+                alert("Enter proper Email");
+                isvalid=false;
+            }
+            if(f.length<10)
+            {
+                alert("Enter 10 digit number");
+                isvalid=false;
+            }
+            if(isvalid){
+                const res=document.getElementById("output");
+                const out=document.getElementById("resultdisp");
+                out.textContent=`Name: ${a} Email: ${b} Phone: ${f} Age: ${c} Dob: ${d } Address: ${e}`;
+                res.style.display='block';
+            }
+            
+
+
+        });
+
+    </script>
+     <footer style="text-align: center;">Date of Completion:10/6/2024</footer>
+    
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cards</title>
+</head>
+<body>
+    <header style="background-color: black;color:azure;margin-top: none;">
+    <h1 style="text-align: center;">Cards</h1>
+    </header>
+    <div id="inputcontainer">
+        <label id="textc">Enter any texts</label>
+        <br>
+        <input type="text" id="iptag">
+        <br>
+        <button id="btn">Submit</button>
+        <br>
+        <br>
+
+    </div>
+    <div id="op">
+    </div>
+    <button type="submit" style="background-color: red; color:white;display:none">X</button>
+
+    <script>
+    
+        function createcard(){
+            if(document.getElementById("iptag").value===""){
+                alert("Please Enter some Texts");
+                return false;
+            }
+            const colors = ["#ff9999", "#66b3ff", "#99ff99", "#ffcc99", "#c2c2f0", "#ffb3e6"];
+            const val=document.getElementById("iptag").value.trim();
+            const card=document.createElement("div");
+            card.classList.add("card");
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            card.style.backgroundColor = randomColor;
+            const cardvalue=document.createElement("p");
+            cardvalue.classList.add("cardcontent");
+            cardvalue.textContent=val;
+            const delt=document.createElement("button");
+            delt.classList.add("delt");
+            delt.textContent="X";
+            delt.onclick=function(){
+                card.remove();
+            }
+
+            card.appendChild(cardvalue);
+            card.appendChild(delt);
+            document.getElementById("op").appendChild(card);
+            
+            
+
+        }
+        document.getElementById("btn").addEventListener('click',function(e){
+            createcard();
+            document.getElementById("iptag").value="";
+        
+        });
+
+
+    </script>
+    <style>
+        #textc{
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        #op{
+            text-align: center;
+        }
+        #inputcontainer{
+            text-align: center;
+        }
+        #iptag{
+            margin-top: 15px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        #btn{
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .card {
+            position: relative;
+            background-color: #eceef0;
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            padding: 5px;
+        }
+
+        .cardvalue {
+            box-sizing: border-box;
+            border: 4px black;
+            border-color: black;
+            flex: 1;
+            margin-right: 10px;
+            word-wrap: break-word;
+            padding: 10px;
+        }
+
+        .delt {
+            background-color: transparent;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 2px 5px;
+            font-size: 25px;
+            font-weight: bold;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .delt:hover{
+            background-color: red;
+        }
+    </style>
+    
+</body>
+</html>

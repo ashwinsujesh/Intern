@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+</head>
+<body>
+    <header>
+        <h1>Image Slider</h1>
+    </header>
+    <main>
+    <div class="slider">
+        <div class="slides">
+            <img src="img1.jfif" class="slide" alt="Image 1">
+            <img src="img2.jfif" class="slide" alt="Image 2">
+            <img src="img3.jfif" class="slide" alt="Image 3">
+            <img src="img4.jfif" class="slide" alt="Image 4">
+            <img src="img5.jfif" class="slide" alt="Image 5">
+        </div>
+        <button class="prev" onclick="prevSlide()">&#10094;</button>
+        <button class="next" onclick="nextSlide()">&#10095;</button>
+    </div>
+    </main>
+    <footer>Date of Completion:11/6/2024</footer>
+    <style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    }
+
+    header {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    }
+
+    main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px 0;
+    }
+
+    .slider {
+        position: relative;
+    width: 80%;
+    max-width: 600px;
+    overflow: hidden;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    }
+
+    .slides {
+    display: flex;
+    transition: transform 0.5s ease-out;
+    }
+
+    .slide {
+    min-width: 100%;
+    transition: opacity 0.5s ease-out;
+    }
+
+    .prev, .next {
+        position: absolute;
+    top: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    user-select: none;
+    }
+
+    .prev {
+    left: 10px;
+    }
+
+    .next {
+    right: 10px;
+    }
+
+    .prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);   
+    }
+
+    </style>
+    <script>
+        let currentSlide = 0;
+
+    function showSlide(index) {
+    const slides = document.querySelectorAll('.slide');
+    if (index >= slides.length) {
+        currentSlide = 0;
+    } else if (index < 0) {
+        currentSlide = slides.length - 1;
+    } else {
+        currentSlide = index;
+    }
+    const offset = -currentSlide * 100;
+    document.querySelector('.slides').style.transform = `translateX(${offset}%)`;
+    }   
+
+    function nextSlide() {
+    showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+    showSlide(currentSlide - 1);
+    }
+    showSlide(currentSlide);
+
+    </script>
+</body>
+</html>
